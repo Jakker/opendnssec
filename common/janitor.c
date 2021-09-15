@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 NLNet Labs.
+ * Copyright (c) 2016-2021 NLnet Labs.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -368,7 +368,6 @@ janitor_thread_start(janitor_thread_t thread)
 int
 janitor_thread_join(janitor_thread_t thread)
 {
-    janitor_thread_t info;
     int status;
     status = pthread_join(thread->thread, NULL);
     janitor_thread_dispose(thread);
@@ -543,7 +542,6 @@ handlesignal(int signal, siginfo_t* info, void* data)
 {
     const char* signalname;
     Dl_info btinfo;
-    janitor_thread_t thrinfo;
     (void) signal;
     (void) data;
 #ifndef HAVE_BACKTRACE_FULL
@@ -637,6 +635,7 @@ janitor_backtrace(void)
 #endif
 }
 
+#ifdef HAVE_BACKTRACE_FULL
 static int
 callbackstring(void* data, uintptr_t pc, const char *filename, int lineno, const char *function)
 {
@@ -660,6 +659,7 @@ callbackstring(void* data, uintptr_t pc, const char *filename, int lineno, const
     else
         return 0;
 }
+#endif
 
 char*
 janitor_backtrace_string(void)
@@ -686,7 +686,7 @@ int
 janitor_trapsignals(char* argv0)
 {
     sigset_t mask;
-    stack_t ss;
+    /*stack_t ss;*/
     struct sigaction newsigaction;
     static struct backtrace_state *frames;
 

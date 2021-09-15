@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2009 NLNet Labs. All rights reserved.
+ * Copyright (c) 2009-2021 NLnet Labs.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -267,7 +268,6 @@ cmdhandler_handle_client_conversation(struct cmdhandler_ctx_struct* context)
 static void
 cmdhandler_accept_client(void* arg)
 {
-    int err;
     cmdhandler_ctx_type* context = (cmdhandler_ctx_type*) arg;
 
     ods_log_debug("[%s] accept client %i", module_str, context->sockfd);

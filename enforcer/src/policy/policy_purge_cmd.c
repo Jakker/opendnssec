@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2011-2021 NLnet Labs.
+ * All rights reserved.
+ */
+
 #include "daemon/engine.h"
 #include "cmdhandler.h"
 #include "daemon/enforcercommands.h"
@@ -64,7 +69,7 @@ purge_policies(int sockfd, db_connection_t *dbconn)
 			client_printf(sockfd, "No zones on policy %s; purging...\n", name);
 			if (policy_delete(policy)) {
 				ods_log_crit("[%s] Error while purging policy from database", module_str);
-				client_printf(sockfd, "Error while updating database\n", name);
+				client_printf(sockfd, "Error while updating database\n");
 				result++;
 			}
 		}
@@ -78,7 +83,6 @@ static int
 run(int sockfd, cmdhandler_ctx_type* context, const char *cmd)
 {
     db_connection_t* dbconn = getconnectioncontext(context);;
-    engine_type* engine = getglobalcontext(context);
     (void) cmd;
 
     ods_log_debug("[%s] %s command", module_str, policy_purge_funcblock.cmdname);

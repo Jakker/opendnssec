@@ -2,6 +2,7 @@
  * Copyright (c) 2011 Surfnet 
  * Copyright (c) 2011 .SE (The Internet Infrastructure Foundation).
  * Copyright (c) 2011 OpenDNSSEC AB (svb)
+ * Copyright (c) 2011-2021 NLnet Labs.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,14 +77,11 @@ help(int sockfd)
 static int
 run(int sockfd, cmdhandler_ctx_type* context, const char *cmd)
 {
-	time_t t_next;
-	task_type *task;
 	char *buf;
 	int argc = 0;
 	char const *argv[MAX_ARGS];
 	int long_index = 0, opt = 0;
 	char const *zone_name = NULL;
-	int pos;
         db_connection_t* dbconn = getconnectioncontext(context);
         engine_type* engine = getglobalcontext(context);
 

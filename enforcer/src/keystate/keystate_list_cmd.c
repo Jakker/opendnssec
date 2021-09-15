@@ -2,6 +2,7 @@
  * Copyright (c) 2011 Surfnet
  * Copyright (c) 2011 .SE (The Internet Infrastructure Foundation).
  * Copyright (c) 2011 OpenDNSSEC AB (svb)
+ * Copyright (c) 2011-2021 NLnet Labs.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,7 +69,6 @@ static int
 keystate(int p, int c, int introducing, key_data_ds_at_parent_t dsstate)
 {
 	int dsseen    = (dsstate == KEY_DATA_DS_AT_PARENT_SEEN);
-	int dsretract = (dsstate == KEY_DATA_DS_AT_PARENT_RETRACT);
 
 	if (p == OMN && c == OMN) return KS_ACT;
 	if (p == RUM && dsseen && c == OMN) return KS_ACT;
@@ -361,7 +361,7 @@ run(int sockfd, cmdhandler_ctx_type* context, const char *cmd)
     char buf[ODS_SE_MAXLINE];
     #define NARGV 12
     const char *argv[NARGV];
-    int success, argIndex;
+    int success;
     int argc = 0, bVerbose = 0, bDebug = 0, bFull = 0, bParsable = 0, bAll = 0;
     int long_index = 0, opt = 0;
     const char* keytype = NULL;

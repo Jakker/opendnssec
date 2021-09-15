@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2009 NLNet Labs. All rights reserved.
+ * Copyright (c) 2009-2021 NLnet Labs.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -289,7 +290,6 @@ engine_stop_threads(engine_type* engine)
 void
 engine_wakeup_workers(engine_type* engine)
 {
-    size_t i = 0;
     ods_log_assert(engine);
     ods_log_assert(engine->config);
     ods_log_debug("[%s] wake up workers", engine_str);
@@ -336,7 +336,6 @@ engine_setup(void)
     int sockets[2] = {0,0};
     int pipefd[2];
     char buff = '\0';
-    int fd, error;
 
     ods_log_debug("[%s] setup signer engine", engine_str);
     if (!engine || !engine->config) {

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2009 NLNet Labs. All rights reserved.
+ * Copyright (c) 2009-2021 NLnet Labs.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -90,7 +91,6 @@ part_free(part_type* part)
 ixfr_type*
 ixfr_create()
 {
-    size_t i = 0;
     ixfr_type* xfr;
 
     CHECKALLOC(xfr = (ixfr_type*) calloc(1, sizeof(ixfr_type)));
@@ -180,7 +180,6 @@ static int
 part_print(FILE* fd, ixfr_type* ixfr, size_t i)
 {
     part_type* part = NULL;
-    int error = 0;
 
     ods_log_assert(ixfr);
     ods_log_assert(fd);
@@ -215,7 +214,7 @@ part_print(FILE* fd, ixfr_type* ixfr, size_t i)
 int
 ixfr_print(FILE* fd, ixfr_type* ixfr)
 {
-    int i = 0, error = 0;
+    int i = 0;
 
     ods_log_assert(fd);
     ods_log_assert(ixfr);

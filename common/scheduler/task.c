@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2009 NLNet Labs. All rights reserved.
+ * Copyright (c) 2009-2021 NLnet Labs.
+ * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -37,6 +38,7 @@
 #include "scheduler/task.h"
 #include "scheduler/schedule.h"
 #include "status.h"
+#include "util.h"
 #include "duration.h"
 #include "file.h"
 #include "log.h"

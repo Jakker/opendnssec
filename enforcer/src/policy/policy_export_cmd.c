@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2014 .SE (The Internet Infrastructure Foundation).
  * Copyright (c) 2014 OpenDNSSEC AB (svb)
+ * Copyright (c) 2014-2021 NLnet Labs.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -66,13 +67,11 @@ run(int sockfd, cmdhandler_ctx_type* context, const char *cmd)
     #define NARGV 4
     char* buf;
     const char* argv[NARGV];
-    int returnCode;
     int argc = 0, long_index = 0, opt = 0;
     const char* policy_name = NULL;
     int all = 0;
     policy_t* policy;
     db_connection_t* dbconn = getconnectioncontext(context);;
-    engine_type* engine = getglobalcontext(context);
 
     static struct option long_options[] = {
         {"policy", required_argument, 0, 'p'},
